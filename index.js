@@ -1,44 +1,45 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port=process.env.port
+const port=process.env.PORT
+
 const characters=require('./harrypotter.json')
+//middleware
 app.use(express.json())
 
 app.get('/',(req,res)=>{
-    res.send("hello Harry Potter characters")
+    res.send("Hello Harry Potter Characters")
 })
+
+app.get('/',(req,res)=>{
+    res.send("Hello Harry Potter Characters")
+})
+
 app.get('/characters',(req,res)=>{
     res.send(characters)
 })
 
-app.get('/characters/;id',(req,res)=>{
-    const id =parseInt(req.params.id);
+app.get('/characters/:id',(req,res)=>{
+    const id=parseInt(req.params.id);
     const character=characters.find((character)=>character.id===id)
-    if (character==underfined){
-        res.status(404).send("the character does not exist")
+    if(character==undefined){
+        res.status(404).send("The character does not exist")
     }else{
         res.send(character)
     }
-    
 })
-const ids= characters.map((character)=>(character.id))
+
+const ids=characters.map((character)=>(character.id))
 let maxId=Math.max(...ids)
 
-
-app. listen(port,()=>{
-    console.log(`App listening on port ${port}`)
-}
-)
-
 app.post('/characters',(req,res)=>{
-    const character=characters.find((character)=>character.name.toLowerCase()==req.body.name.toLowerCase())
-    console.log (req.body)
+    const character=characters.find((character)=>character.name.toLowerCase()===req.body.name.toLowerCase())
+    console.log(req.body)
     if(character!=undefined){
-        res.status(409).send("the character already exists");
+        res.status(409).send("The character already exists");
     }
     else{
-        maxId+=1;//thisis equal to maxId=maxId+1
+        maxId+=1;//this is equal to maxId=maxId+1
         req.body.id=maxId;
         characters.push(req.body)
         res.status(201).send(req.body)
@@ -58,3 +59,12 @@ app.delete("/characters/:name",(req,res)=>{
     }
 })
 
+//homework-create a patch request to update the name of the character
+
+
+
+
+
+app.listen(port,()=>{
+    console.log(`App listening on port ${port}`)
+})
