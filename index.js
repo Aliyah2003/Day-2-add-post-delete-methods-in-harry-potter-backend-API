@@ -62,6 +62,28 @@ app.delete("/characters/:name",(req,res)=>{
 //homework-create a patch request to update the name of the character
 
 
+// PATCH request to update a character's name
+app.patch('/characters/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const character = characters.find((character) => character.id === id);
+
+    // Check if the character with the given ID exists
+    if (!character) {
+        return res.status(404).send("The character does not exist");
+    }
+
+    // Check if the new name is provided in the request body
+    const newName = req.body.name;
+    if (!newName) {
+        return res.status(400).send("Please provide a new name");
+    }
+
+    // Update the character's name
+    character.name = newName;
+
+    // Respond with the updated character
+    res.send(character);
+})
 
 
 
