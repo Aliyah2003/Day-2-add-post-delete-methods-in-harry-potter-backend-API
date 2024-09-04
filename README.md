@@ -17,6 +17,7 @@ harrypotter.json: This file contains the initial data for the characters. It’s
 ## Getting Started
 To get this project up and running on your local machine, follow these steps:
 
+
 1. Clone the Repository
 First, download the project files to your computer using Git. Open your terminal or command prompt and run:
 
@@ -25,7 +26,10 @@ git clone https://github.com/yourusername/harry-potter-backend-api.git
 ```
 
 Replace 'yourusername' with your GitHub username.
-
+command will initialize a project and create the package. json file.
+```javascript
+npm init -y
+```
 2. Navigate to the Project Folder
 Change your directory to the project folder:
 
@@ -47,13 +51,17 @@ makefile
 ```javascript
 PORT=4000
 ```
-
+command will initialize a project and create the package. json file. if you want to add a new package. json file
+```javascript
+npm init -y
+```
 5. Start the Server
 To start the server, use the following command:
 
 ```javascript
 npm start
 ```
+
 If everything is set up correctly, you should see a message saying that the app is running.
 
 6. Access the API
@@ -88,6 +96,11 @@ curl -X PATCH http://localhost:3000/characters/4 -H "Content-Type: application/j
 Delete a Character
 ```javascript
 curl -X DELETE http://localhost:3000/characters/Luna%20Lovegood%20Updated
+```
+
+to run the server 
+```javascript
+npm run dev
 ```
 ## Troubleshooting
 If you encounter any issues, here are some common solutions:
